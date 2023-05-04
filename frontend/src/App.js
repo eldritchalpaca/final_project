@@ -9,6 +9,8 @@ function App() {
   const [checked4, setChecked4] = useState(false);
   const [index, setIndex] = useState(0);
   const [inCredits, creditState] = useState(false);
+  let row = 0;
+  let col = 0;
 
   useEffect(() => {
     getAllProducts();
@@ -28,12 +30,11 @@ function App() {
   const showAllItems = product.map((el) => (
     <div key={el._id}>
       <img src={el.image} width={30} /> <br />
-      name: {el.name} <br />
-      {/* Category: {el.category} <br /> */}
+      Name: {el.name} <br />
+      Id: {el._id} <br />
       Description: {el.description} <br />
-      {/*  Price: ${el.price} <br /> */}
-      {/*  Rating: {el.rating.rate} <br />
-            Count: {el.rating.count} <br /> <br /> */}
+      Location: {el.location} <br />
+      Image Source: {el.imgSource} <br />
     </div>
   ));
 
@@ -41,11 +42,10 @@ function App() {
   const [addNewProduct, setAddNewProduct] = useState({
     _id: 0,
     name: "",
-    //price: 0.0,
-    description: "",
-    category: "",
     image: "http://127.0.0.1:4000/images/",
-    rating: { rate: 0.0, count: 0 },
+    location: "",
+    description: "",
+    imgSource: "",
   });
 
   const [updateProduct, setUpdateProduct] = useState({
@@ -70,26 +70,30 @@ function App() {
     const value = evt.target.value;
     if (evt.target.name === "_id") {
       setAddNewProduct({ ...addNewProduct, _id: value });
-    } else if (evt.target.name === "name") {
+    } 
+    else if (evt.target.name === "name") {
       setAddNewProduct({ ...addNewProduct, name: value });
-    } /* else if (evt.target.name === "price") {
-            setAddNewProduct({ ...addNewProduct, price: value });
-        } */ else if (evt.target.name === "description") {
+    }
+    else if (evt.target.name === "description") {
       setAddNewProduct({ ...addNewProduct, description: value });
-    } else if (evt.target.name === "category") {
-      setAddNewProduct({ ...addNewProduct, category: value });
-    } else if (evt.target.name === "image") {
+    } 
+    else if (evt.target.name === "imgSource") {
+      setAddNewProduct({ ...addNewProduct, imgSource: value });
+    } 
+    else if (evt.target.name === "image") {
       const temp = value;
       setAddNewProduct({ ...addNewProduct, image: temp });
-    } else if (evt.target.name === "rate") {
-      setAddNewProduct({ ...addNewProduct, rating: { rate: value } });
-    } else if (evt.target.name === "count") {
+    } 
+    else if (evt.target.name === "location") {
+      setAddNewProduct({ ...addNewProduct, rating: { location: value } });
+    } 
+/*     else if (evt.target.name === "count") {
       const temp = addNewProduct.rating.rate;
       setAddNewProduct({
         ...addNewProduct,
         rating: { rate: temp, count: value },
       });
-    }
+    } */
   }
 
   function handleOnSubmit(e) {
@@ -202,12 +206,11 @@ function App() {
   const showOneItem = oneProduct.map((el) => (
     <div key={el._id}>
       <img src={el.image} width={30} /> <br />
-      name: {el.name} <br />
-      Category: {el.category} <br />
+      Name: {el.name} <br />
+      Id: {el._id} <br />
       Description: {el.description} <br />
-      {/*  Price: {el.price} <br /> */}
-      Rating :{el.rating.rate} <br />
-      Count: {el.rating.count} <br /> <br />
+      Location: {el.location} <br />
+      Image Source: {el.imgSource} <br />
     </div>
   ));
 
@@ -272,10 +275,10 @@ function App() {
             <input type="text" placeholder="name?" name="name" value={addNewProduct.name} onChange={handleChange} />
             {/* <input type="number" placeholder="price?" name="price" value={addNewProduct.price} onChange={handleChange} /> */}
             <input type="text" placeholder="description?" name="description" value={addNewProduct.description} onChange={handleChange} />
-            <input type="text" placeholder="category?" name="category" value={addNewProduct.category} onChange={handleChange} />
+            <input type="text" placeholder="imgSource?" name="imgSource" value={addNewProduct.imgSource} onChange={handleChange} />
             <input type="text" placeholder="image?" name="image" value={addNewProduct.image} onChange={handleChange} />
-            <input type="number" placeholder="rate?" name="rate" value={addNewProduct.rating.rate} onChange={handleChange} />
-            <input type="number" placeholder="count?" name="count" value={addNewProduct.rating.count} onChange={handleChange} />
+            <input type="text" placeholder="location?" name="location" value={addNewProduct.location} onChange={handleChange} />
+            {/* <input type="number" placeholder="count?" name="count" value={addNewProduct.rating.count} onChange={handleChange} /> */}
             <button class="button-background" type="submit" onClick={handleOnSubmit}>
               submit
             </button>
