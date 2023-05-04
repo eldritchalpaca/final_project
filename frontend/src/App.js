@@ -8,13 +8,14 @@ function App() {
   const [oneProduct, setOneProduct] = useState([]);
   const [checked4, setChecked4] = useState(false);
   const [index, setIndex] = useState(0);
-  const [pageIndex, setPageIndex] = useState(false);
-
-  //page index names ex: do setPageIndex(home) to go to home page, changed for better navbar-ing
-  // do pageIndex === home to check if you are in the home page
+  
+  //page index names 
+  //ex: do setPageIndex(home) to go to home page, changed for better navbar-ing
+  //do pageIndex === home to check if you are in the home page
   const home = 0;
   const catalog = 1;
   const credits = 2;
+  const [pageIndex, setPageIndex] = useState(home);
 
   useEffect(() => {
     getAllProducts();
@@ -324,6 +325,7 @@ function App() {
           )}
         </div>
       </div>}
+      
       {pageIndex === credits && <div>
         <div>
           <h1 class="display-5">this page was made by:</h1>
