@@ -8,9 +8,13 @@ function App() {
   const [oneProduct, setOneProduct] = useState([]);
   const [checked4, setChecked4] = useState(false);
   const [index, setIndex] = useState(0);
-  const [inCredits, creditState] = useState(false);
-  let row = 0;
-  let col = 0;
+  const [pageIndex, setPageIndex] = useState(false);
+
+  //page index names ex: do setPageIndex(home) to go to home page, changed for better navbar-ing
+  // do pageIndex === home to check if you are in the home page
+  const home = 0;
+  const catalog = 1;
+  const credits = 2;
 
   useEffect(() => {
     getAllProducts();
@@ -52,10 +56,6 @@ function App() {
     _id: 0,
     price: 0.0,
   });
-
-  function toggleShopAndCredits() {
-    creditState(!inCredits);
-  }
 
   function handleUpdateChange(evt) {
     const value = evt.target.value;
@@ -227,10 +227,13 @@ function App() {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#" onClick={() => creditState(false)}>Home</a>
+                <a class="nav-link active" aria-current="page" /* href="#" */ onClick={() => setPageIndex(home)}>Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" onClick={() => creditState(true)}>Credits</a>
+                <a class="nav-link active" aria-current="page" /* href="#" */ onClick={() => setPageIndex(catalog)}>Catalog</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" /* href="#" */ onClick={() => setPageIndex(credits)}>Credits</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -255,7 +258,12 @@ function App() {
         </div>
       </nav>
 
-      {!inCredits && <div>
+      {pageIndex === home && <div>
+        <h1>this is the home page!</h1>
+
+        </div>}
+
+      {pageIndex === catalog && <div>
         <div>
           <h3 class="cart-name">Catalog of Products</h3>
           <button class="button-background" onClick={() => getAllProducts()}>Show All products</button>
@@ -316,7 +324,7 @@ function App() {
           )}
         </div>
       </div>}
-      {inCredits && <div>
+      {pageIndex === credits && <div>
         <div>
           <h1 class="display-5">this page was made by:</h1>
         </div>
@@ -336,7 +344,7 @@ function App() {
           This is a simulation of a Pokemon Mart. Users are able to buy and update product prices.
         </div>
       </div>}
-      <div onClick={() => toggleShopAndCredits()}><button class="button-background">{inCredits ? "Return to Shopping" : "Go to Credits"}</button></div>
+      {/* <div onClick={() => toggleShopAndCredits()}><button class="button-background">{pageIndex ? "Return to Shopping" : "Go to Credits"}</button></div> */}
     </div>
   ); // return end
 }; // App end
