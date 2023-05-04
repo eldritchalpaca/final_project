@@ -1,0 +1,112 @@
+
+    [
+        {
+            "_id": 1,
+            "name": "Autumn Skullcap",
+            "image": "http://127.0.0.1:4000/images/autumnskullcap.jpg",
+            "description": "    This is sometimes confused with edible varietals like honey fungus, sheathed woodtuft, and velvet foot. Like many toxic species of mushroom, the skullcap contains amatoxin and can result in death within seven days.",
+            "location": ["global"],
+            "imgSource": "https://www.flickr.com/photos/lasse_chr/5195533789"
+        },
+
+        {
+            "_id": 2,
+            "name": "Conocybe Filaris",
+            "image": "http://127.0.0.1:4000/images/conocybefilaris.jpg",
+            "description": "    This commonly results in accidental poisoning because it is similar in appearance to the psilocybe mushroom - or magic mushrooms. However, consuming a conocybe filaris mushroom causes irreparable liver damage due to high levels of amatoxin.",
+            "location": ["asia", "europe", "north america"],
+            "imgSource": "https://www.inaturalist.org/taxa/179219-Conocybe-filaris"
+        },
+
+        {
+            "_id": 3,
+            "name": "Deadly Dapperling",
+            "image": "http://127.0.0.1:4000/images/deadlydapperling.jpg",
+            "description": "     Accidentally eating the mushroom causes severe liver toxicity and if not treated immediately can be fatal. If untreated, the fatality rate of amatoxins is about 50% but is still 10% fatal if treated, depending on the amount consumed.",
+            "location": ["asia", "europe"],
+            "imgSource": "https://en.wikipedia.org/wiki/Lepiota_brunneoincarnata"
+        },
+
+        {
+            "_id": 4,
+            "name": "Deathcap",
+            "image": "http://127.0.0.1:4000/images/deathcap.jfif",
+            "description": "    Known as one of the most poisonous mushrooms in the northern hemisphere, the death cap lives up to its moniker by causing more than half of all mycetism fatalities. Even the slightest dose of a death cap can prove dangerous due to its high levels of amanitin, which causes damage to the liver and kidneys.",
+            "location": ["global"],
+            "imgSource": "https://mdc.mo.gov/discover-nature/field-guide/destroying-angel"
+        },
+
+        {
+            "_id": 5,
+            "name": "Destroying Angel (Amanita Species)",
+            "image": "http://127.0.0.1:4000/images/destroyingangel.jpg",
+            "description": "    The destroying angel is the most common toxic mushroom worldwide, containing high levels of amatoxins that cause fatal mycetism.",
+            "location": ["europe"],
+            "imgSource": "https://mdc.mo.gov/discover-nature/field-guide/destroying-angel"
+        },
+
+        {
+            "_id": 6,
+            "name": "Podostroma Cornu-Damae",
+            "image": "http://127.0.0.1:4000/images/podostromacornudamae.jpg",
+            "description": "    The red fruiting bodies of this rare mushroom contain trichothecene mycotoxins, which can cause multiple organ failure.",
+            "location": ["asia"],
+            "imgSource": "https://inaturalist.ca/taxa/517830-Podostroma-cornu-damae"
+        },
+    
+
+        {
+            "_id": 7,
+            "name": "Poison Oak",
+            "image": "http://127.0.0.1:4000/images/poison_oak.jpg",
+            "description": "    Though it grows all over the country, it's more common in the West. It could be hours or days before your skin reacts to the plant sap (urushiol). And your rash may eventually turn bumpy and form blisters that ooze.",
+            "location": ["north america"],
+            "imgSource": "https://en.wikipedia.org/wiki/Toxicodendron_diversilobum"
+        },
+
+        {
+            "_id": 8,
+            "name": "Atropa Belladonna",
+            "image": "http://127.0.0.1:4000/images/atropa_belladonna.jpg",
+            "description": "    This extremely poisonous plant has a long and colorful history of use and abuse. When Linnaeus formally applied a scientific name to this plant in 1753, he acknowledged its toxic nature as well as its social value.",
+            "location": ["asia", "north america", "europe"],
+            "imgSource": "https://commons.wikimedia.org/wiki/File:Atropa_belladonna_Pokrzyk_wilcza_jagoda_2016-07-23_02.jpg"
+        },
+
+        {
+            "_id": 9,
+            "name": "Bitter Nightshade",
+            "image": "http://127.0.0.1:4000/images/bitter_nightshade.jpg",
+            "description": "    Purple flowers in groups of three or more bloom around July or August. Kids are sometimes drawn to the roundish, juicy, glossy, red, poisonous berries. The poison (solanine) can give you headache, drowsiness, stomachache, vomiting, trembling, lowered temperature, dilated pupils, and diarrhea.",
+            "location": ["asia", "north america", "europe"],
+            "imgSource": "https://www.webmd.com/skin-problems-and-treatments/ss/slideshow-poison-plants-guide"
+        },
+
+        {
+            "_id": 10,
+            "name": "Oleander",
+            "image": "http://127.0.0.1:4000/images/oleander.jpg",
+            "description": "    Bright clusters of flowers bloom at the ends of branches in colors that vary from red and pink to white. All parts of the plant are very poisonous. Just one leaf is enough to kill an adult. You may have serious stomach pain, diarrhea, vomiting, dilated pupils, dizziness, and breathing problems.",
+            "location": ["asia", "north america", "europe"],
+            "imgSource": "https://www.webmd.com/skin-problems-and-treatments/ss/slideshow-poison-plants-guide"
+        },
+
+        {
+            "_id": 11,
+            "name": "Hura Crepitans/Sandbox Tree",
+            "image": "http://127.0.0.1:4000/images/sandbox_tree.jpg",
+            "description": "    This tree is famous for its pointed spines all along its trunk. It also produces poisonous sap that causes skin rashes. The fruits of this tree tend to explode and spread their seeds in different directions after getting matured. The speed of its seeds can reach up to 240 km per hour and can be very dangerous for any people or animals standing in that range.",
+            "location": ["north america", "south america"],
+            "imgSource": "https://www.green.earth/blog/top-10-dangerous-trees"
+        },
+
+        {
+            "_id": 12,
+            "name": "Manchineel Tree",
+            "image": "http://127.0.0.1:4000/images/manchineel_tree.jpg",
+            "description": "    Manchineel tree is native to the Caribbean coasts, including regions such as Florida, Central and South America, and Mexico. It is nicknamed the Manzanilla de la Muerte - little apple of death - for a reason. The fruit can be potentially fatal, and the milky sap from the tree causes extreme allergic reactions and blisters.",
+            "location": ["north america", "south america"],
+            "imgSource": "https://www.green.earth/blog/top-10-dangerous-trees"
+        }
+
+    ]
