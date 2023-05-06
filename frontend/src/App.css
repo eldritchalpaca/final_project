@@ -18,14 +18,14 @@ div {
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: blueviolet;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: palevioletred;
 }
 
 .App-link {
@@ -39,4 +39,71 @@ div {
   to {
     transform: rotate(360deg);
   }
+}
+
+.margin-lefter {
+  margin-left: 10px;
+}
+
+.required::after {
+  content: "*";
+  color: red;
+}
+
+body {
+  font-family: "Times", sans-serif;
+  font-size: 16px;
+}
+
+.bulba-green {
+  background-color: yellowgreen;
+  border-color: #31aa31;
+}
+
+.cart-title {
+  color: #31aa31;
+  font-family: "Papyrus";
+}
+
+.cart-id {
+  color: purple;
+  font-family: "Sans Serif";
+}
+
+.cart-add {
+  color: forestgreen;
+  font-family: "Helvetica";
+}
+
+.cart-update {
+  color: goldenrod;
+  font-family: "Helvetica";
+}
+
+.cart-delete {
+  color: maroon;
+  font-family: "Helvetica";
+}
+
+.navbar {
+  background-color: maroon;
+}
+
+.navtitle {
+  background-color: #02022c;
+  color: white;
+  font-size: x-large;
+  font-family: Georgia, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#margin-wrangler {
+  margin-top: 20px;
+}
+
+.button-background {
+  background-color: palevioletred;
+}
+
+* {
+  background-color: peachpuff;
 }
