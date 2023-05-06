@@ -34,7 +34,7 @@ function App() {
 
   const showAllItems = product.map((el) => (
     <div key={el._id}>
-      <img src={el.image} width={30} /> <br />
+      <img src={el.image} width={200} height={200} class="item-img frame"/> <br />
       Name: {el.name} <br />
       Id: {el._id} <br />
       Description: {el.description} <br />
@@ -260,8 +260,43 @@ function App() {
       </nav>
 
       {pageIndex === home && <div>
-        <h1>this is the home page!</h1>
+        <h1><center>The Poison Place</center></h1>
+          <p><center>Welcome to the Poison Place, a catalogue of all things toxic in the natural world. Use the knowledge given here wisely! Or else...</center></p>
 
+          <div id="carouselExample" class="carousel slide carousel-container">
+            <div class="carousel-inner" id="main">
+            <div class="carousel-item active">
+              <img src="https://cdn.pixabay.com/photo/2019/09/06/10/40/fly-agaric-4456114_1280.jpg" alt="mushroom" class="center carousel-img" />
+              <div class="center carousel-txt">this is a pretty cool* mushroom</div>
+              <a href="https://pixabay.com/photos/toadstool-nature-forest-mushroom-4456114/" class="center carousel-txt">image source</a>
+            </div>
+            <div class="carousel-item">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/PoisonOak_wb_biggerLeaves.jpg/675px-PoisonOak_wb_biggerLeaves.jpg?20140528165016" alt="poison oak" class="center carousel-img" />
+              <div class="center carousel-txt">this is poison oak. touching it would be bad for you.</div>
+              <a href="https://commons.wikimedia.org/wiki/File:PoisonOak_wb_biggerLeaves.jpg" class="center carousel-txt">image source</a>
+            </div>
+            <div class="carousel-item">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Atropa_belladonna_Pokrzyk_wilcza_jagoda_2016-07-23_02.jpg/1199px-Atropa_belladonna_Pokrzyk_wilcza_jagoda_2016-07-23_02.jpg?20171125135232" alt="atropa belladonna" class="center carousel-img" />
+              <div class="center carousel-txt">remember kids! don't eat suspicious berries you find on the playground. these are NOT BLUEBERRIES!!</div>
+              <a href="https://commons.wikimedia.org/wiki/File:Atropa_belladonna_Pokrzyk_wilcza_jagoda_2016-07-23_02.jpg" class="center carousel-txt">image source</a>
+            </div>
+          </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon carousel-button" aria-hidden="true">
+            <div id="extwaiokist" v="nipgg" q="4ac2859e" c="685.0" i="697" u="1.541" s="05022301" sg="svr_04262315-ga_05022301-bai_04242318" d="1" w="false" e="" a="3" m="BMe=" vn="9adfy">
+              <div id="extwaigglbit" class="carousel-button" v="nipgg" q="4ac2859e" c="685.0" i="697" u="1.541" s="05022301" sg="svr_04262315-ga_05022301-bai_04242318" d="1" w="false" e="" a="3" m="BMe="></div>
+            </div>
+          </span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+          <footer><h6 class="footer"><center>Disclaimer: The Poison Place is not responsible for any incidents involving the toxins displayed and sold here. By accessing this site you agree to our Terms & Conditions. Misuse of any plants or animals sold via the Poison Place is punishable under federal law, and will get you in jail for 1000 years. If you feel symptoms of nausea, throwing up, fever, or have bore witness to greater beings from the fifth dimension, close this site, erase your browser history, and contact your nearest hospital.</center></h6></footer>
         </div>}
 
       {pageIndex === catalog && <div>
