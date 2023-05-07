@@ -41,21 +41,21 @@ app.post("/insert", async (req, res) => {
     console.log(req.body);
     const p_id = req.body._id;
     const pname = req.body.name;
-    //const pprice = req.body.price;
+    const pprice = req.body.price;
     const pdescription = req.body.description;
     const pcategory = req.body.category;
     const pimage = req.body.image;
-    const prate = req.body.rating.rate;
-    const pcount = req.body.rating.count;
+    //const prate = req.body.rating.rate;
+    //const pcount = req.body.rating.count;
 
     const formData = new Product({
         _id: p_id,
         name: pname,
-        //price: pprice,
+        price: pprice,
         description: pdescription,
         category: pcategory,
         image: pimage,
-        rating: { rate: prate, count: pcount },
+        //rating: { rate: prate, count: pcount },
     });
 
     try {
