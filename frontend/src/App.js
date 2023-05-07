@@ -1,13 +1,18 @@
 import { useState, useEffect } from "react";
 import './App.css';
+import items from "./mushrooms.json";
+
 function App() {
   const [product, setProduct] = useState([]);
   const [viewer1, setViewer1] = useState(false);
   const [viewer2, setViewer2] = useState(false);
   const [viewer4, setViewer4] = useState(false);
+  const [itemView, setItemView] = useState(false);
   const [oneProduct, setOneProduct] = useState([]);
   const [checked4, setChecked4] = useState(false);
   const [index, setIndex] = useState(0);
+  const [ProductsCategory, setProductsCategory] = useState(items);
+  const [query, setQuery] = useState('');
   
   //page index names 
   //ex: do setPageIndex(home) to go to home page, changed for better navbar-ing
@@ -38,6 +43,7 @@ function App() {
       Name: {el.name} <br />
       Id: {el._id} <br />
       Description: {el.description} <br />
+      Price: ${el.price} <br />
       Location: {el.location.join(", ")} <br />
       Image Source: {el.imgSource} <br />
     </div>
@@ -50,6 +56,7 @@ function App() {
     image: "http://127.0.0.1:4000/images/",
     location: "",
     description: "",
+    price: 0.0,
     imgSource: "",
   });
 
@@ -77,6 +84,9 @@ function App() {
     }
     else if (evt.target.name === "description") {
       setAddNewProduct({ ...addNewProduct, description: value });
+    }
+    else if (evt.target.name === "price") {
+      setAddNewProduct({ ...addNewProduct, price: value})
     } 
     else if (evt.target.name === "imgSource") {
       setAddNewProduct({ ...addNewProduct, imgSource: value });
@@ -96,6 +106,39 @@ function App() {
       });
     } */
   }
+
+  let listItems = ProductsCategory.map((el) => (
+    // PRODUCT
+    <div className="row border-top border-bottom bulba-green margin-lefter" key={el.id}>
+        <div className="row main align-items-center bulba-green">
+            <div className="col-2 bulba-green">
+                <img className="img-fluid bulba-green" src={process.env.PUBLIC_URL + el.image}/>
+            </div>
+            <div className="col bulba-green">
+                <div className="row text-muted bulba-green">{el.title}</div>
+                <div className="row bulba-green">{el.category}</div>
+            </div>
+            <div className="col bulba-green">
+                ${el.price} <span className="close bulba-green">&#10005;</span>
+            </div>
+        </div>
+    </div>
+));
+
+  const handleChangeSearch = (e) => {
+    setQuery(e.target.value);
+    const results = items.filter(eachProduct => {
+        if (e.target.value === "") {
+            setProductsCategory(items);
+            return ProductsCategory;
+        }
+        return eachProduct.name.toLowerCase().includes(e.target.value.toLowerCase())
+    });
+    if (product.length > 0) {setViewer4(true);}
+      else {setViewer4(false);}
+    setProductsCategory(results);  
+    setItemView(true);
+}
 
   function handleOnSubmit(e) {
     e.preventDefault();
@@ -159,6 +202,66 @@ function App() {
       });
   }
 
+  function getMushrooms(e) {
+    e.preventDefault();
+    //console.log(e.target.value);
+    fetch("http://localhost:4000/getMushrooms", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updateProduct),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Update product completed");
+        console.log(data);
+        if (data) {
+          //const keys = Object.keys(data);
+          const value = Object.values(data);
+          alert(value);
+        }
+      });
+  }
+
+  function getPlants(e) {
+    e.preventDefault();
+    //console.log(e.target.value);
+    fetch("http://localhost:4000/getMushrooms", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updateProduct),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Update product completed");
+        console.log(data);
+        if (data) {
+          //const keys = Object.keys(data);
+          const value = Object.values(data);
+          alert(value);
+        }
+      });
+  }
+
+  function getAnimals(e) {
+    e.preventDefault();
+    //console.log(e.target.value);
+    fetch("http://localhost:4000/getMushrooms", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updateProduct),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Update product completed");
+        console.log(data);
+        if (data) {
+          //const keys = Object.keys(data);
+          const value = Object.values(data);
+          alert(value);
+        }
+      });
+  }
+
   function deleteOneProduct(deleteid) {
     console.log("Product to delete :", deleteid);
     fetch("http://localhost:4000/delete/", {
@@ -205,16 +308,23 @@ function App() {
   }
 
   const showOneItem = oneProduct.map((el) => (
-    <div key={el._id}>
-      <img src={el.image} width={30} /> <br />
+    <div key={el._id}><center>
+      <img class="item-img frame" src={el.image} width={30} /> <br />
       Name: {el.name} <br />
       Id: {el._id} <br />
       Description: {el.description} <br />
+      Price: ${el.price} <br />
       Location: {el.location.join(", ")} <br />
       Image Source: {el.imgSource} <br />
+      </center>
     </div>
   ));
 
+
+function changePage(page) {
+  setPageIndex(page);
+  setItemView(false);
+}
 
   return (
     <div>
@@ -228,33 +338,37 @@ function App() {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" /* href="#" */ onClick={() => setPageIndex(home)}>Home</a>
+                <a class="nav-link active" aria-current="page" /* href="#" */ onClick={() => changePage(home)}>Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" /* href="#" */ onClick={() => setPageIndex(catalog)}>Catalog</a>
+                <a class="nav-link active" aria-current="page" /* href="#" */ onClick={() => changePage(catalog)}>Catalog</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" /* href="#" */ onClick={() => setPageIndex(credits)}>Credits</a>
+                <a class="nav-link" /* href="#" */ onClick={() => changePage(credits)}>Credits</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
+                  Browse Categories
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></hr></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><a class="dropdown-item" href="#">Mushrooms</a></li>
+                  <li><a class="dropdown-item" href="#">Plants</a></li>
+                  <li><a class="dropdown-item" href="#">Animals</a></li>
                 </ul>
               </li>
             </ul>
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
-              <button class="btn btn-outline-success" type="submit">Search</button>
+              <button class="btn btn-outline-success" type="submit" onClick={handleChangeSearch}>Search</button>
             </form>
           </div>
         </div>
       </nav>
+
+      {itemView && <div>
+          <h3 class="cart-name">Products Search: {listItems}</h3>
+          
+        </div>}
 
       {pageIndex === home && <div>
         <h1 class="title"><center>The Poison Place</center></h1>
@@ -316,8 +430,8 @@ function App() {
           <form action="">
             <input type="number" placeholder="id?" name="_id" value={addNewProduct._id} onChange={handleChange} />
             <input type="text" placeholder="name?" name="name" value={addNewProduct.name} onChange={handleChange} />
-            {/* <input type="number" placeholder="price?" name="price" value={addNewProduct.price} onChange={handleChange} /> */}
             <input type="text" placeholder="description?" name="description" value={addNewProduct.description} onChange={handleChange} />
+            <input type="number" placeholder="price?" name="price" value={addNewProduct.price} onChange={handleChange} />
             <input type="text" placeholder="imgSource?" name="imgSource" value={addNewProduct.imgSource} onChange={handleChange} />
             <input type="text" placeholder="image?" name="image" value={addNewProduct.image} onChange={handleChange} />
             <input type="text" placeholder="location?" name="location" value={addNewProduct.location} onChange={handleChange} />
@@ -327,7 +441,7 @@ function App() {
             </button>
           </form>
         </div>
-        {/*                 <div>
+                        <div>
                     <h3 class="cart-update">Update a product's price:</h3>
                     <form action="">
                         <input type="number" placeholder="id?" name="_id" value={updateProduct._id} onChange={handleUpdateChange} />
@@ -336,7 +450,7 @@ function App() {
                             submit
                         </button>
                     </form>
-                </div> */}
+                </div>
         <div>
           <h3 class="cart-delete">Delete one product:</h3>
           <label name="acceptdelete">Check to complete action: </label>
@@ -352,7 +466,7 @@ function App() {
               name: {product[index].name} <br />
               {/* Category: {product[index].category} <br /> */}
               Description: {product[index].description} <br />
-              {/*  Price: {product[index].price} <br /> */}
+               Price: {product[index].price} <br />
               {/*   Rate :{product[index].rating.rate} <br />
                             Count: {product[index].rating.count} <br /> <br /> */}
             </div>
