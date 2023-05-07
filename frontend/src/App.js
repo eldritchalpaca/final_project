@@ -38,7 +38,7 @@ function App() {
   }
 
   const showAllItems = product.map((el) => (
-    <div key={el._id}>
+    <div class="lesser-title-alt" key={el._id}>
       <img src={el.image} width={200} height={200} class="item-img frame"/> <br />
       Name: {el.name} <br />
       Id: {el._id} <br />
@@ -270,7 +270,7 @@ function App() {
   }
 
   const showOneItem = oneProduct.map((el) => (
-    <div key={el._id}><center>
+    <div class="lesser-title-alt" key={el._id}><center>
       <img class="item-img frame" src={el.image} width={30} /> <br />
       Name: {el.name} <br />
       Id: {el._id} <br />
@@ -379,16 +379,17 @@ function changePage(page) {
           <h3 class="cart-name">Catalog of Products</h3>
           <button class="button-background" onClick={() => getAllProducts()}>Show All products</button>
           <input type="text" id="message" name="message" placeholder="id" onChange={(e) => getOneProduct(e.target.value)} />
-          <h3 class="cart-name">Show all available Products.</h3>
+          <h3 class="cart-name">Show All Available Products.</h3>
           <hr></hr>
           {viewer1 && <div>Products {showAllItems}</div>}
           <hr></hr>
         </div>
-        <div><h3 class="cart-id">Show one Product by Id:</h3>
+        <div><h3 class="cart-id">Show One Product by ID:</h3>
           {viewer2 && <div>Product: {showOneItem}</div>}
         </div>
         <div>
-          <h3 class="cart-add">Add a new product :</h3>
+          <hr></hr>
+          <h3 class="cart-add">Add a New Product (ID, name, description, price, image source, image, location):</h3>
           <form action="">
             <input type="number" placeholder="id?" name="_id" value={addNewProduct._id} onChange={handleChange} />
             <input type="text" placeholder="name?" name="name" value={addNewProduct.name} onChange={handleChange} />
@@ -404,7 +405,7 @@ function changePage(page) {
           </form>
         </div>
                         <div>
-                    <h3 class="cart-update">Update a product's price:</h3>
+                    <h3 class="cart-update">Update a Product's Price (ID, new price):</h3>
                     <form action="">
                         <input type="number" placeholder="id?" name="_id" value={updateProduct._id} onChange={handleUpdateChange} />
                         <input type="number" placeholder="new price?" name="price" value={updateProduct.price} onChange={handleUpdateChange} />
@@ -414,8 +415,8 @@ function changePage(page) {
                     </form>
                 </div>
         <div>
-          <h3 class="cart-delete">Delete one product:</h3>
-          <label name="acceptdelete">Check to complete action: </label>
+          <h3 class="cart-delete">Delete One Product:</h3>
+          <label name="acceptdelete">Check to Complete Action: </label>
           <input type="checkbox" id="acceptdelete" name="acceptdelete" checked={checked4}
             onChange={(e) => setChecked4(!checked4)} />
           <button class="button-background" onClick={() => getOneByOneProductPrev()}>Prev</button>
