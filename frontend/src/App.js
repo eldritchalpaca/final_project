@@ -202,65 +202,27 @@ function App() {
       });
   }
 
-  function getMushrooms(e) {
+  function getAllProductsJSON(e) { //fetch is GET by default?
     e.preventDefault();
     //console.log(e.target.value);
-    fetch("http://localhost:4000/getMushrooms", {
+    fetch("http://localhost:4000", {
       method: "GET",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updateProduct),
-    })
+    }) 
       .then((response) => response.json())
       .then((data) => {
-        console.log("Update product completed");
+        console.log("get product completed");
         console.log(data);
         if (data) {
           //const keys = Object.keys(data);
           const value = Object.values(data);
-          alert(value);
+          console.log(value);
         }
       });
   }
 
-  function getPlants(e) {
-    e.preventDefault();
-    //console.log(e.target.value);
-    fetch("http://localhost:4000/getMushrooms", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updateProduct),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Update product completed");
-        console.log(data);
-        if (data) {
-          //const keys = Object.keys(data);
-          const value = Object.values(data);
-          alert(value);
-        }
-      });
-  }
 
-  function getAnimals(e) {
-    e.preventDefault();
-    //console.log(e.target.value);
-    fetch("http://localhost:4000/getMushrooms", {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(updateProduct),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Update product completed");
-        console.log(data);
-        if (data) {
-          //const keys = Object.keys(data);
-          const value = Object.values(data);
-          alert(value);
-        }
-      });
-  }
+
+
 
   function deleteOneProduct(deleteid) {
     console.log("Product to delete :", deleteid);
