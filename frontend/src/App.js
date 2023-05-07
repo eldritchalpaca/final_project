@@ -38,7 +38,7 @@ function App() {
       Name: {el.name} <br />
       Id: {el._id} <br />
       Description: {el.description} <br />
-      Location: {el.location} <br />
+      Location: {el.location.join(", ")} <br />
       Image Source: {el.imgSource} <br />
     </div>
   ));
@@ -210,7 +210,7 @@ function App() {
       Name: {el.name} <br />
       Id: {el._id} <br />
       Description: {el.description} <br />
-      Location: {el.location} <br />
+      Location: {el.location.join(", ")} <br />
       Image Source: {el.imgSource} <br />
     </div>
   ));
@@ -219,7 +219,7 @@ function App() {
   return (
     <div>
       {/* navbar */}
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary lesser-title-alt">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Navbar</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -247,9 +247,6 @@ function App() {
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
               </li>
-              <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
-              </li>
             </ul>
             <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
@@ -260,24 +257,26 @@ function App() {
       </nav>
 
       {pageIndex === home && <div>
-        <h1><center>The Poison Place</center></h1>
-          <p><center>Welcome to the Poison Place, a catalogue of all things toxic in the natural world. Use the knowledge given here wisely! Or else...</center></p>
+        <h1 class="title"><center>The Poison Place</center></h1>
+          <p class="home-text"><center>Welcome to the Poison Place, a catalogue of all things toxic in the natural world. Use the knowledge given here wisely! Or else...</center></p>
+
+          {/*Disclaimer: Don't normally put raw HTML this way, this is used like this due to time constraints and having a relatively small amount of items. This code was reformatted from a multipage example.*/}
 
           <div id="carouselExample" class="carousel slide carousel-container">
             <div class="carousel-inner" id="main">
             <div class="carousel-item active">
               <img src="https://cdn.pixabay.com/photo/2019/09/06/10/40/fly-agaric-4456114_1280.jpg" alt="mushroom" class="center carousel-img" />
-              <div class="center carousel-txt">this is a pretty cool* mushroom</div>
+              <div class="center carousel-txt home-text">This is a pretty cool mushroom.</div>
               <a href="https://pixabay.com/photos/toadstool-nature-forest-mushroom-4456114/" class="center carousel-txt">image source</a>
             </div>
             <div class="carousel-item">
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/PoisonOak_wb_biggerLeaves.jpg/675px-PoisonOak_wb_biggerLeaves.jpg?20140528165016" alt="poison oak" class="center carousel-img" />
-              <div class="center carousel-txt">this is poison oak. touching it would be bad for you.</div>
+              <div class="center carousel-txt home-text">This is poison oak. Touching it would be bad for you.</div>
               <a href="https://commons.wikimedia.org/wiki/File:PoisonOak_wb_biggerLeaves.jpg" class="center carousel-txt">image source</a>
             </div>
             <div class="carousel-item">
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Atropa_belladonna_Pokrzyk_wilcza_jagoda_2016-07-23_02.jpg/1199px-Atropa_belladonna_Pokrzyk_wilcza_jagoda_2016-07-23_02.jpg?20171125135232" alt="atropa belladonna" class="center carousel-img" />
-              <div class="center carousel-txt">remember kids! don't eat suspicious berries you find on the playground. these are NOT BLUEBERRIES!!</div>
+              <div class="center carousel-txt home-text">Remember kids! Don't eat suspicious berries you find on the playground. These are NOT BLUEBERRIES!!</div>
               <a href="https://commons.wikimedia.org/wiki/File:Atropa_belladonna_Pokrzyk_wilcza_jagoda_2016-07-23_02.jpg" class="center carousel-txt">image source</a>
             </div>
           </div>
@@ -363,22 +362,24 @@ function App() {
       
       {pageIndex === credits && <div>
         <div>
-          <h1 class="display-5">this page was made by:</h1>
+          <h1 class="display-5 lesser-title"><center>Website Credits:</center></h1>
         </div>
-        <div class="column">
-          <h2>zeynep oghan</h2>
-          <p>zeyoghan@iastate.edu</p>
+        <div class="column home-text-alt">
+          <h2><center>Zeynep Oghan</center></h2>
+          <p><center>Appearance and Cosmetic Features</center></p>
+          <p><center>zeyoghan@iastate.edu</center></p>
         </div>
-        <div class="column">
-          <h2>alix noble</h2>
-          <p>design and infrastructure</p>
-          <p>anoble@iastate.edu</p>
+        <div class="column home-text-alt-2">
+          <h2><center>Alix Noble</center></h2>
+          <p><center>Design and Infrastructure</center></p>
+          <p><center>anoble@iastate.edu</center></p>
         </div>
-        <div class="footer" >
-          SE/ComS319 Construction of User Interfaces, 4/30/2023, Abraham Aldaco
+
+        <div class="footer" ><center>
+          SE/ComS319 Construction of User Interfaces, 5/6/2023, Abraham Aldaco</center>
         </div>
-        <div>
-          This is a simulation of a Pokemon Mart. Users are able to buy and update product prices.
+        <div class="footer"><center>
+          This site is a catalogue of poisonous entities from the natural world. It is intended solely for educational purposes, including if the user decides to buy an item.</center>
         </div>
       </div>}
       {/* <div onClick={() => toggleShopAndCredits()}><button class="button-background">{pageIndex ? "Return to Shopping" : "Go to Credits"}</button></div> */}

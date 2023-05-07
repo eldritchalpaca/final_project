@@ -73,6 +73,13 @@ body {
   border-color: #31aa31;
 }
 
+.title {
+  font-size: 150px;
+  color: crimson;
+  font-family: "Papyrus", "Helvetica";
+  font-weight: bold;
+}
+
 .cart-title {
   color: #31aa31;
   font-family: "Papyrus";
@@ -100,6 +107,33 @@ body {
 
 .footer {
   font-size: smaller;
+}
+
+.home-text {
+  color: rgb(81, 21, 21);
+  font-family: "Allerta Stencil"; 
+}
+
+.home-text-alt {
+  color: rgb(56, 28, 112);
+  font-family: "Allerta Stencil"; 
+}
+
+.home-text-alt-2 {
+  color: rgb(28, 57, 112);
+  font-family: "Allerta Stencil"; 
+}
+
+.lesser-title {
+  color:rgb(144, 39, 55);
+  font-family: "Papyrus";
+  font-weight: bold;
+}
+
+.lesser-title-alt {
+  color:rgb(144, 39, 55);
+  font-family: "Sans Serif";
+  font-weight: bold;
 }
 
 #carousel-container {
@@ -130,7 +164,7 @@ body {
 
 .navtitle {
   background-color: #02022c;
-  color: white;
+  color: maroon;
   font-size: x-large;
   font-family: Georgia, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
