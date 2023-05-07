@@ -4,6 +4,7 @@ const ReactFormDataSchema = new mongoose.Schema({
     name: { type: String },
     image: { type: String },
     location: [String],
+    price: { type: Number},
     description: { type: String },
     imgSource: { type: String },
 },
