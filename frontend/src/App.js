@@ -293,10 +293,10 @@ function changePage(page) {
       {/* navbar */}
       <nav class="navbar navbar-expand-lg bg-body-tertiary lesser-title-alt">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
+          {/* <a class="navbar-brand" href="#">Navbar</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-          </button>
+          </button> */}
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
@@ -308,7 +308,7 @@ function changePage(page) {
               <li class="nav-item">
                 <a class="nav-link" /* href="#" */ onClick={() => changePage(credits)}>Credits</a>
               </li>
-              <li class="nav-item dropdown">
+              {/* <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Browse Categories
                 </a>
@@ -317,12 +317,12 @@ function changePage(page) {
                   <li><a class="dropdown-item" href="#">Plants</a></li>
                   <li><a class="dropdown-item" href="#">Animals</a></li>
                 </ul>
-              </li>
+              </li> */}
             </ul>
-            <form class="d-flex" role="search">
+            {/* <form class="d-flex" role="search">
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
               <button class="btn btn-outline-success" type="submit" onClick={handleChangeSearch}>Search</button>
-            </form>
+            </form> */}
           </div>
         </div>
       </nav>
