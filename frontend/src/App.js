@@ -1,18 +1,18 @@
 import { useState, useEffect } from "react";
 import './App.css';
-import items from "./mushrooms.json";
+import itemsAll from "./mushrooms.json";
 
 function App() {
   const [product, setProduct] = useState([]);
   const [viewer1, setViewer1] = useState(false);
   const [viewer2, setViewer2] = useState(false);
   const [viewer4, setViewer4] = useState(false);
-  const [itemView, setItemView] = useState(false);
   const [oneProduct, setOneProduct] = useState([]);
   const [checked4, setChecked4] = useState(false);
   const [index, setIndex] = useState(0);
-  const [ProductsCategory, setProductsCategory] = useState(items);
-  const [query, setQuery] = useState('');
+  const [searchString, setSearchString] = useState('');
+  // const [ProductsCategory, setProductsCategory] = useState(itemsAll);
+  // const [query, setQuery] = useState('');
   
   //page index names 
   //ex: do setPageIndex(home) to go to home page, changed for better navbar-ing
@@ -20,6 +20,7 @@ function App() {
   const home = 0;
   const catalog = 1;
   const credits = 2;
+  const itemList = 3;
   const [pageIndex, setPageIndex] = useState(home);
 
   useEffect(() => {
@@ -107,38 +108,6 @@ function App() {
     } */
   }
 
-  let listItems = ProductsCategory.map((el) => (
-    // PRODUCT
-    <div className="row border-top border-bottom bulba-green margin-lefter" key={el.id}>
-        <div className="row main align-items-center bulba-green">
-            <div className="col-2 bulba-green">
-                <img className="img-fluid bulba-green" src={process.env.PUBLIC_URL + el.image}/>
-            </div>
-            <div className="col bulba-green">
-                <div className="row text-muted bulba-green">{el.title}</div>
-                <div className="row bulba-green">{el.category}</div>
-            </div>
-            <div className="col bulba-green">
-                ${el.price} <span className="close bulba-green">&#10005;</span>
-            </div>
-        </div>
-    </div>
-));
-
-  const handleChangeSearch = (e) => {
-    setQuery(e.target.value);
-    const results = items.filter(eachProduct => {
-        if (e.target.value === "") {
-            setProductsCategory(items);
-            return ProductsCategory;
-        }
-        return eachProduct.name.toLowerCase().includes(e.target.value.toLowerCase())
-    });
-    if (product.length > 0) {setViewer4(true);}
-      else {setViewer4(false);}
-    setProductsCategory(results);  
-    setItemView(true);
-}
 
   function handleOnSubmit(e) {
     e.preventDefault();
@@ -159,10 +128,6 @@ function App() {
         }
       });
   }
-
-  /*     useEffect(() => {
-          getAllProducts();
-      }, [checked4]); */
 
   function getOneByOneProductNext() {
     if (product.length > 0) {
@@ -220,10 +185,6 @@ function App() {
       });
   }
 
-
-
-
-
   function deleteOneProduct(deleteid) {
     console.log("Product to delete :", deleteid);
     fetch("http://localhost:4000/delete/", {
@@ -248,7 +209,6 @@ function App() {
     }
     getOneByOneProductNext();
   }
-
 
   function getOneProduct(id) {
     console.log(id);
@@ -285,8 +245,58 @@ function App() {
 
 function changePage(page) {
   setPageIndex(page);
-  setItemView(false);
 }
+
+function changePage(page, str) {
+  setPageIndex(page);
+  setSearchString(str);
+}
+
+function SearchResults() {
+  
+  /* JSON VERSION */
+  const filteredData = itemsAll.filter((item) =>
+    item.name.toLowerCase().includes(searchString.toLowerCase())
+  );
+
+  /* DATABASE VERSION
+  fetch("http://localhost:4000/")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Show Catalog of Products :");
+        console.log(data);
+        setProduct(data);
+      });
+  */
+
+  /* NOTE: WOULD BE product.map FOR DATABASE */
+  const items = filteredData.map((item) => (
+    <div className="lesser-title-alt" key={item._id}>
+      <img src={item.image} width={200} height={200} className="item-img frame"/> <br />
+      Name: {item.name} <br />
+      Id: {item._id} <br />
+      Description: {item.description} <br />
+      Price: ${item.price} <br />
+      Location: {item.location.join(", ")} <br />
+      Image Source: {item.imgSource} <br />
+    </div>
+  ));
+
+  return <div>{items}</div>;
+}
+
+  function handleSearchInputChange(event) {
+    setSearchString(event.target.value);
+  }
+
+  function handleSearchSubmit(event) {
+    event.preventDefault();
+    changePage(itemList, searchString);
+  }
+
+  useEffect(() => {
+    console.log("bep" + searchString);
+  }, [searchString]);
 
   return (
     <div>
@@ -319,16 +329,18 @@ function changePage(page) {
                 </ul>
               </li> */}
             </ul>
-            {/* <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"></input>
-              <button class="btn btn-outline-success" type="submit" onClick={handleChangeSearch}>Search</button>
-            </form> */}
+            <form onSubmit={handleSearchSubmit} className="d-flex" role="search">
+      <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" value={searchString} onChange={handleSearchInputChange}/>
+      <button className="btn btn-outline-success" type="submit">
+        Search
+      </button>
+    </form>
           </div>
         </div>
       </nav>
 
-      {itemView && <div>
-          <h3 class="cart-name">Products Search: {listItems}</h3>
+      {pageIndex === itemList && <div>
+          <h3 class="cart-name">Products Search: {SearchResults(searchString)}</h3>
           
         </div>}
 
